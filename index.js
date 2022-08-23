@@ -19,9 +19,11 @@ app.get('/', (req,res)=> {
     res.send('Hello to memories APIS')
 })
 
+const host = '0.0.0.0';
+
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(()=> app.listen(PORT, ()=> console.log(`Server running on port: ${PORT}`)))
+    .then(()=> app.listen(PORT, host, ()=> console.log(`Server running on port: ${PORT}`)))
     .catch((err)=> console.log(err.massage));
 // mongoose.set('useFindAndModify', false);
